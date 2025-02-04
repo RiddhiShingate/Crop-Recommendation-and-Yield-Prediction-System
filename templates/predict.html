@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet"
+    >
+    <title>Recommendation</title>
+
+    <style>
+        *
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Jost", sans-serif !important;
+}
+
+body {
+            background-image: url("{{ url_for('static', filename='home2.jpg') }}");;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            color: white;
+            overflow: hidden;
+        }
+.Main{
+
+
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-family: "Jost", sans-serif;
+    font-size: 40px;
+    background-color: #00000080;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+.navbar
+{
+    display: flex;
+    width: 100vw;
+    height:calc(15vh + 5px);
+    padding: 10px 30px;
+    padding-top: 15px;
+    align-items: center;
+    background-color: #ffffff60;
+}
+.navbar a
+{
+    text-decoration: none;
+    color:white ;
+}
+.menu
+{
+    font-size: 10px;
+    display: flex;
+    gap: 40px;
+    margin-left: auto;
+}
+.menu-option
+{
+    text-decoration: underline;
+    font-size: 25px;
+    color: white;
+}
+.logo
+{
+
+    font-size: 35px;
+    display:flex;
+
+
+
+}
+.logo-back{
+    color: rgb(36, 219, 36);
+
+}
+.Form
+{
+
+    border-radius: 10px;
+    background-color: #f5deb360;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    padding: 15px;
+    margin: 0;
+    font-size: small;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+
+}
+.title
+{
+    display: flex;
+    font-size: 35px;
+
+}
+.row
+{
+    display: flex;
+    gap: 50px;
+
+}
+.input_feild
+{
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 5px;
+
+
+}
+.input_feild input
+{
+    outline: none;
+    padding: 5px;
+    margin-top: 0;
+    background-color: white;
+    border: none;
+    border-bottom: 1px solid white;
+    color: black !important;
+    border-radius: 10px;
+    font-size: 15px;
+
+}
+
+
+.btn
+{
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: large;
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid white;
+    color: white;
+    background-color: transparent;
+    margin-left: 7px;
+
+}
+
+.btn button:hover {
+       background-color: rgb(36, 219, 36);
+       color: white;
+   }
+
+.result
+{
+    position: fixed;
+    top: 68vh;
+    left: 53vw;
+    font-size: x-large;
+    font-weight: 400;
+}
+.card-text
+{
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+.menu-option a:hover
+{
+    color:rgb(36, 219, 36) !important;
+}
+    </style>
+</head>
+<body>
+    <div class="Main">
+        <div class="navbar">
+            <h1 class="logo">Harvest<span class="logo-back">Hub</span></h1>
+            <div class="menu">
+                <h1 class="menu-option"><a href="{{ url_for('home') }}">Home</a></h1>
+                <h1 class="menu-option"><a href="{{ url_for('predict') }}">Crop Recommendation</a></h1>
+            </div>
+
+        </div>
+        <div class="Form">
+            <h1 class="title">Yield Prediction</h1>
+            <form action="/yeildPredict" method="post">
+
+                <div class="row">
+                    <div class="input_feild">
+                        <label for="Year">Year</label>
+                        <input type="number" name="Year" step="any" placeholder="Year">
+                    </div>
+                     <div class="input_feild">
+                        <label for="production">Production</label>
+                        <input type="number"  name="production" step="any" placeholder="In KG" >
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="input_feild">
+                        <label for="Area">Area</label>
+                        <input type="number"  name="Area" placeholder="In meter">
+                    </div>
+                    <div class="input_feild">
+                        <label for="Crop">Crop</label>
+                        <input type="text"  name="Crop" placeholder="Rice,Sugarcane etc">
+                    </div>
+                </div>
+
+
+               <div class="row">
+                <div class="input_feild">
+                    <label for="Season">Season</label>
+                    <input type="text"  name="Season"  placeholder="kharib, rabi, whole year ">
+                </div>
+               </div>
+
+
+                <button type="submit" class="btn">Predict</button>
+            </form>
+        </div>
+
+            <div class="result">
+
+              {% if prediction %}
+              <h5 class="text-center"> Predicted Yield: <br>{{prediction*1000}} <br>Kg/m sq</h5>
+
+              {% endif %}
+            </div>
+    </div>
+</body>
+</html>

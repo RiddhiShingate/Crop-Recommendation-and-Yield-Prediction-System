@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!--Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<title>Home|Prediction</title>
+<!--STYLE-->
+<style>
+*
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Jost", sans-serif !important;
+}
+
+body{
+    background-image: url("{{ url_for('static', filename='home2.jpg') }}");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.Main{
+
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    color: white;
+    font-family: "Playfair Display", serif;
+    font-family: "Jost", sans-serif;
+    font-size: 40px;
+    background-color: #00000080;
+    flex-direction: column;
+
+}
+.navbar
+{
+    display: flex;
+    width: 100vw;
+    height:calc(15vh + 5px);
+    padding: 10px 30px;
+    padding-top: 15px;
+    align-items: center;
+    background-color: #ffffff60;
+}
+.navbar a
+{
+    text-decoration: none;
+    color:white ;
+}
+.menu
+{
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+}
+.menu-option
+{
+    font-size: 25px;
+    animation: line 200ms ease-in-out;
+}
+
+.Right
+{
+
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.logo
+{
+
+    font-size: 35px;
+    display:flex;
+
+
+
+}
+.logo-back{
+    color: rgb(36, 219, 36);
+
+}
+.title
+{
+    display: flex;
+    width: 50%;
+    padding: 10px;
+    font-size:45px;
+    font-weight: 700;
+    font-family: "Playfair Display", serif;
+    line-height: 1.5;
+    word-spacing: 6px;
+    text-align: left;
+
+
+}
+.Left
+{
+
+    width: 50%;
+    display: flex;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.farmer-img
+{
+    height: 85%;
+    border-radius: 10px;
+
+
+
+}
+
+.right-btns
+{
+
+    display: flex;
+    width: 50%;
+    gap: 20px;
+
+}
+.right-btns a
+{
+    text-decoration: none;
+    color: inherit;
+}
+.btn
+{
+
+    border:2px solid #687E65;
+    border-radius: 10px;
+    width: fit-content;
+    font-size: x-large;
+    padding: 10px;
+    border: 2px solid white;
+    margin-left: 10px;
+}
+.crop-btn .yeild-btn
+{
+    font-family: "Jost", sans-serif;
+    font-size: x-large;
+    font-weight: 500;
+    color: rgb(36, 219, 36);
+    background-color:wheat;
+
+
+}
+
+.yeild-btn
+{
+    color: white;
+    background-color:transparent;
+
+}
+
+
+.crop-btn:hover
+{
+    background-color:rgb(36, 219, 36);
+    color:white;
+    border: 2px solid rgb(36, 219, 36);
+}
+
+.yeild-btn:hover
+{
+    background-color:rgb(36, 219, 36);
+    color:white;
+    border: 2px solid rgb(36, 219, 36);
+}
+
+</style>
+</head>
+<body>
+
+    <div class="Main">
+        <div class="navbar">
+            <h1 class="logo">Harvest<span class="logo-back">Hub</span></h1>
+            <!-- <div class="menu">
+                <h1 class="menu-option"><a href="/">Crop Reccomend</a></h1>
+                <h1 class="menu-option"><a href="/">Yeild Prediction</a></h1>
+            </div> -->
+        </div>
+        <div class="Right">
+
+            <div class="title">Empowering Farmers with Crop Recommendations and Yield Predictions</div>
+            <div class="right-btns">
+                <div class="btn crop-btn "><a href="{{ url_for('yeildPredict') }}">Yield Prediction</a></div>
+                <div class="btn yeild-btn "><a href="{{ url_for('predict') }}">Crop Recommendation </a></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
